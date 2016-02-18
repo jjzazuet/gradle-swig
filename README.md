@@ -1,4 +1,5 @@
-# gradle-swig
+gradle-swig
+===========
 
 A simple `swig` Java target wrapper.
 
