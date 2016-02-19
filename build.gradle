@@ -1,8 +1,11 @@
-group 'net.tribe7'
-version '0.1'
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '0.9.3'
+}
 
-apply plugin: 'java-gradle-plugin'
-apply plugin: 'groovy'
+group 'net.tribe7.gradle'
+version '0.1'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -13,5 +16,19 @@ dependencies {
     compile gradleApi()
     testCompile( 'org.spockframework:spock-core:1.0-groovy-2.4' ) {
         exclude module: 'groovy-all'
+    }
+}
+
+pluginBundle {
+    website = 'https://github.com/jjzazuet/gradle-swig'
+    vcsUrl = 'https://github.com/jjzazuet/gradle-swig.git'
+    description = 'SWIG/JNI wrapper.'
+
+    plugins {
+        swigPlugin {
+            id = 'net.tribe-seven.swig'
+            displayName = 'Gradle SWIG/JNI plugin.'
+            tags = ['swig', 'java', 'jni', 'c', 'c++']
+        }
     }
 }

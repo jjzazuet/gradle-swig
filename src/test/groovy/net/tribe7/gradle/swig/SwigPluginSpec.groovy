@@ -22,7 +22,7 @@ class SwigPluginSpec extends Specification {
         task.wrapperTargetFile = new File('./build/resources/test/foo_wrap.cpp')
 
         when:
-        project.pluginManager.apply 'net.tribe7.swig'
+        project.pluginManager.apply 'net.tribe-seven.swig'
         task.execute()
 
         then: true
