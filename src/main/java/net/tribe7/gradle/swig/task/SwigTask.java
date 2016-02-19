@@ -35,9 +35,13 @@ public class SwigTask extends Exec {
 
         isTrue(source.exists(), "Source interface/header file does not exist.");
         isTrue(source.isFile(), "Source interface/header is not a file.");
-        isTrue(javaSourcesPath.exists(), "Java sources path does not exist.");
-        isTrue(wrapperTargetFile.getParentFile().exists(), "Wrapper target path does not exist.");
-        isTrue(wrapperTargetFile.getParentFile().isDirectory(), "Wrapper target path is not a directory.");
+
+        isTrue(javaSourcesPath.exists() || javaSourcesPath.mkdirs(), "Failed to create Java sources path.");
+        isTrue(javaSourcesPath.isDirectory(), "Java sources path is not a directory.");
+
+        File wp = wrapperTargetFile.getParentFile();
+        isTrue(wp.exists() || wp.mkdirs(), "Failed to create wrapper target path directory.");
+        isTrue(wp.isDirectory(), "Wrapper target path is not a directory.");
 
         if (verbose) { arg("-v"); }
         if (enableCpp) { arg("-c++"); }

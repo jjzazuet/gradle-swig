@@ -18,8 +18,8 @@ class SwigPluginSpec extends Specification {
         task.packageName = 'net.tribe7.foo'
         task.source = new File('./src/test/resources/foo.h')
         task.includePaths = [new File('./src/test/resources/time')]
-        task.javaSourcesPath = new File('./build/resources/test')
-        task.wrapperTargetFile = new File('./build/resources/test/foo_wrap.cpp')
+        task.javaSourcesPath = new File('./build/resources/test/net/tribe7/foo')
+        task.wrapperTargetFile = new File('./build/resources/test/net/tribe7/foo/foo_jni.cpp')
 
         when:
         project.pluginManager.apply 'net.tribe-seven.swig'
