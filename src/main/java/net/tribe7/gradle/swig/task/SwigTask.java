@@ -11,6 +11,7 @@ public class SwigTask extends Exec {
     private boolean verbose;
     private boolean enableCpp;
 
+    private String swigPath;
     private String module;
     private String packageName;
 
@@ -25,7 +26,7 @@ public class SwigTask extends Exec {
     @Override
     protected void exec() {
 
-        setExecutable("swig");
+        setExecutable(swigPath == null ? "swig" : swigPath);
 
         notNull(module, "Missing module name.");
         notNull(packageName, "Missing java package name.");
@@ -81,6 +82,11 @@ public class SwigTask extends Exec {
     public boolean isVerbose() { return verbose; }
     public void setVerbose(boolean verbose) {
         this.verbose = verbose;
+    }
+
+    public String getSwigPath() { return swigPath; }
+    public void setSwigPath(String swigPath) {
+        this.swigPath = swigPath;
     }
 
     public boolean isEnableCpp() { return enableCpp; }
