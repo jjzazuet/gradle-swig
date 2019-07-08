@@ -9,6 +9,7 @@ This plugin will define a new task of type `SwigTask`, which accepts the followi
 | --- | --- | --- | --- |
 | `verbose` | no | Verbose output | `true/false` |
 | `enableCpp` | no | Enable/disable c++ parsing (default `false`) | `true/false` |
+| `swigPath` | no | Full path to `swig` executable (default `swig`) | `/path/to/swig` |
 | `symbols` | no | Additional preprocessor symbols. | `['SWIGWORDSIZE64', 'FOO']` |
 | `module` | yes | Target module name | `'groundhog'` |
 | `packageName` | yes | Target Java package for generated Java sources | `net.tribe7.foo` |
@@ -22,7 +23,7 @@ This plugin will define a new task of type `SwigTask`, which accepts the followi
 - Right now, the plugin only wraps the command line `swig` options pertaining to the
 Java target.
 
-- `swig` must be present and accessible via your system `PATH`. Otherwise the plugin will fail.
+- `swig` must be present and accessible via your system `PATH`, otherwise the plugin will fail. Optionally use `swigPath` task property to set the full path to `swig` executable, e.g. `swigPath ="/path/to/swig"`
 
 If there's enough interest, I may enhance it to generate interfaces
 for the rest of the supported languages.
