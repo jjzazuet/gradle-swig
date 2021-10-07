@@ -2,24 +2,26 @@ package net.tribe7.gradle.swig.task;
 
 import org.gradle.api.InvalidUserDataException;
 import org.gradle.api.tasks.*;
+import org.gradle.api.tasks.Optional;
+
 import java.io.File;
 import java.util.*;
 import static java.lang.String.format;
 
 public class SwigTask extends Exec {
 
-    private boolean verbose;
-    private boolean enableCpp;
+    @Internal private boolean verbose;
+    @Input private boolean enableCpp;
 
-    private String swigPath;
-    private String module;
-    private String packageName;
+    @Input @Optional private String swigPath;
+    @Input private String module;
+    @Input private String packageName;
 
     @InputFile private File source;
     @OutputFile private File wrapperTargetFile;
-    private File javaSourcesPath;
-    private Collection<File> includePaths = new ArrayList<>();
-    private Collection<String> symbols = new ArrayList<>();
+    @OutputDirectory private File javaSourcesPath;
+    @InputFiles private Collection<File> includePaths = new ArrayList<>();
+    @Input private Collection<String> symbols = new ArrayList<>();
 
     private final List<Object> commandArgs = new ArrayList<>();
 
